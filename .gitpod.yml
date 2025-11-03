@@ -1,0 +1,15 @@
+tasks:
+  - name: Setup & Run (Single)
+    init: |
+      pip install -r requirements.txt
+      if [ ! -f .env ]; then cp .env.example .env; fi
+    command: |
+      echo "Running a single Behave run on LT..."
+      behave -k
+  - name: Run Parallel (2 combos)
+    command: |
+      python scripts/run_parallel.py
+vscode:
+  extensions:
+    - ms-python.python
+    - ms-python.vscode-pylance

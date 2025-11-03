@@ -1,0 +1,34 @@
+name: Behave on LambdaTest (2 combos)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run-parallel:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: "Windows 10"
+            browser: "Chrome"
+            version: "latest"
+          - platform: "macOS Sonoma"
+            browser: "Safari"
+            version: "latest"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Run Behave on LT
+        env:
+          LT_USERNAME: ${{ secrets.LT_USERNAME }}
+          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+          LT_PLATFORM: ${{ matrix.platform }}
+          LT_BROWSER: ${{ matrix.browser }}
+          LT_VERSION: ${{ matrix.version }}
+        run: behave -k
