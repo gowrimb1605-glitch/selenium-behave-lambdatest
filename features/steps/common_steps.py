@@ -39,7 +39,7 @@ def enter_message(context, message):
     input_box.send_keys(message)
     context._message = message
 
-@when('I click "Get Checked Value"')
+@when('I click the button "Get Checked Value"')
 def click_get_value(context):
     # xpath used here
     btn = WebDriverWait(context.driver, 10).until(
