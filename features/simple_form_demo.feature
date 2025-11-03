@@ -8,5 +8,5 @@ Feature: Simple Form Demo
     When I click "Simple Form Demo"
     Then the URL should contain "simple-form-demo"
     When I enter the message "Welcome to LambdaTest"
-    And I click "Get Checked Value"
+    And I click the button "Get Checked Value"
     Then I should see "Welcome to LambdaTest" under "Your Message:"
