@@ -25,6 +25,7 @@ def build_caps(test_name: str):
         "geoLocation": "GB",
     }
 
+    # Return Selenium 4 style capability keys
     caps = {
         "platformName": platform,
         "browserName": browser,
